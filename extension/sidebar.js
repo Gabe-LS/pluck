@@ -201,22 +201,15 @@ var turndownService = new TurndownService({ headingStyle: 'atx', bulletListMarke
 
 var copyLabels = { html: 'Copy as HTML + inline CSS', md: 'Copy as Markdown (MD)' };
 var downloadLabels = { html: 'Download as .txt', md: 'Download as .md' };
-var altDown = false;
 
-function updateButtonLabels() {
-  btnCopy.querySelector('.btn-label').textContent = altDown ? downloadLabels.html : copyLabels.html;
-  btnCopyMd.querySelector('.btn-label').textContent = altDown ? downloadLabels.md : copyLabels.md;
+function updateButtonLabels(alt) {
+  btnCopy.querySelector('.btn-label').textContent = alt ? downloadLabels.html : copyLabels.html;
+  btnCopyMd.querySelector('.btn-label').textContent = alt ? downloadLabels.md : copyLabels.md;
 }
 
-document.addEventListener("keydown", function(e) {
-  if (e.key === "Alt" && !altDown) { altDown = true; updateButtonLabels(); }
-});
-document.addEventListener("keyup", function(e) {
-  if (e.key === "Alt" && altDown) { altDown = false; updateButtonLabels(); }
-});
-window.addEventListener("blur", function() {
-  if (altDown) { altDown = false; updateButtonLabels(); }
-});
+document.addEventListener("keydown", function(e) { if (e.key === "Alt") updateButtonLabels(true); });
+document.addEventListener("keyup", function(e) { if (e.key === "Alt") updateButtonLabels(false); });
+window.addEventListener("blur", function() { updateButtonLabels(false); });
 
 function downloadFile(content, filename) {
   var blob = new Blob([content], { type: 'text/plain' });
@@ -322,9 +315,9 @@ function buildFilename(meta, ext) {
   return name + '.' + ext;
 }
 
-btnCopy.addEventListener("click", function() {
+btnCopy.addEventListener("click", function(e) {
   if (!cachedResult) return;
-  if (altDown) {
+  if (e.altKey) {
     getPageMetadata(function(meta) {
       downloadFile(cachedResult.html, buildFilename(meta, 'txt'));
       flashButton(btnCopy, 'Downloaded!');
@@ -334,10 +327,10 @@ btnCopy.addEventListener("click", function() {
   }
 });
 
-btnCopyMd.addEventListener("click", function() {
+btnCopyMd.addEventListener("click", function(e) {
   if (!cachedResult) return;
   var md = turndownService.turndown(cachedResult.html);
-  if (altDown) {
+  if (e.altKey) {
     getPageMetadata(function(meta) {
       downloadFile(md, buildFilename(meta, 'md'));
       flashButton(btnCopyMd, 'Downloaded!');
