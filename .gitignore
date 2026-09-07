@@ -1,0 +1,14 @@
+node_modules/
+.chrome-profile/
+test-profile/
+test-profile-brave/
+screenshots/
+test-results/
+.DS_Store
+.ruff_cache/
+store/
+CLAUDE.md
+tests/
+playwright.config.js
+package.json
+package-lock.json

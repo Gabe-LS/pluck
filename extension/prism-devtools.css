@@ -1,0 +1,78 @@
+/* Prism theme matching Chrome DevTools colors */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: "SF Mono", "Menlo", "Monaco", "Consolas", monospace;
+  font-size: 10px;
+  line-height: 1.4;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  tab-size: 2;
+  hyphens: none;
+}
+
+pre[class*="language-"] {
+  padding: 6px 8px;
+  margin: 0;
+  overflow: auto;
+  background: #f5f5f5;
+}
+
+/* Tags */
+.token.tag { color: #881280; }
+
+/* Attribute names */
+.token.attr-name { color: #994500; }
+
+/* Attribute values */
+.token.attr-value,
+.token.attr-value .punctuation { color: #1a1aa6; }
+
+/* Punctuation (<, >, =, /) */
+.token.punctuation { color: #333; }
+
+/* Text / content */
+.token.content,
+.token.plain-text { color: #333; }
+
+/* Comments */
+.token.comment { color: #236e25; }
+
+/* Strings */
+.token.string { color: #1a1aa6; }
+
+/* DOCTYPE, CDATA */
+.token.doctype,
+.token.prolog,
+.token.cdata { color: #236e25; }
+
+/* Entities */
+.token.entity { color: #994500; }
+
+/* ---- Dark mode ---- */
+body.dark code[class*="language-"],
+body.dark pre[class*="language-"] {
+  color: #9aa0a6;
+}
+
+body.dark pre[class*="language-"] {
+  background: #202124;
+}
+
+body.dark .token.tag { color: #d5a5ff; }
+body.dark .token.attr-name { color: #f8c37a; }
+body.dark .token.attr-value,
+body.dark .token.attr-value .punctuation { color: #7cacf8; }
+body.dark .token.punctuation { color: #9aa0a6; }
+body.dark .token.content,
+body.dark .token.plain-text { color: #e8eaed; }
+body.dark .token.comment { color: #87d68d; }
+body.dark .token.string { color: #7cacf8; }
+body.dark .token.doctype,
+body.dark .token.prolog,
+body.dark .token.cdata { color: #87d68d; }
+body.dark .token.entity { color: #f8c37a; }
