@@ -199,17 +199,6 @@ function flashButton(btn, msg) {
 
 var turndownService = new TurndownService({ headingStyle: 'atx', bulletListMarker: '-', emDelimiter: '_' });
 
-var copyLabels = { html: 'Copy as HTML + inline CSS', md: 'Copy as Markdown (MD)' };
-var downloadLabels = { html: 'Download as .txt', md: 'Download as .md' };
-
-function updateButtonLabels(alt) {
-  btnCopy.querySelector('.btn-label').textContent = alt ? downloadLabels.html : copyLabels.html;
-  btnCopyMd.querySelector('.btn-label').textContent = alt ? downloadLabels.md : copyLabels.md;
-}
-
-document.addEventListener("keydown", function(e) { if (e.key === "Alt") updateButtonLabels(true); });
-document.addEventListener("keyup", function(e) { if (e.key === "Alt") updateButtonLabels(false); });
-window.addEventListener("blur", function() { updateButtonLabels(false); });
 
 function downloadFile(content, filename) {
   var blob = new Blob([content], { type: 'text/plain' });
