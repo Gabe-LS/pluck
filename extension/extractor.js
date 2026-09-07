@@ -563,7 +563,7 @@ function buildExtractorCode(options) {
     html: html,
     tag: $0.tagName.toLowerCase(),
     id: $0.id || null,
-    classes: $0.className || null,
+    classes: $0.getAttribute('class') || null,
     elementCount: elementCount,
     styleCount: styleCount
   };
