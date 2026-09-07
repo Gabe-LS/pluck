@@ -315,8 +315,9 @@ function buildFilename(meta, ext) {
   return name + '.' + ext;
 }
 
-btnCopy.addEventListener("click", function(e) {
-  if (!cachedResult) return;
+btnCopy.addEventListener("pointerdown", function(e) {
+  if (!cachedResult || e.button !== 0) return;
+  e.preventDefault();
   if (e.altKey) {
     getPageMetadata(function(meta) {
       downloadFile(cachedResult.html, buildFilename(meta, 'txt'));
@@ -327,8 +328,9 @@ btnCopy.addEventListener("click", function(e) {
   }
 });
 
-btnCopyMd.addEventListener("click", function(e) {
-  if (!cachedResult) return;
+btnCopyMd.addEventListener("pointerdown", function(e) {
+  if (!cachedResult || e.button !== 0) return;
+  e.preventDefault();
   var md = turndownService.turndown(cachedResult.html);
   if (e.altKey) {
     getPageMetadata(function(meta) {
