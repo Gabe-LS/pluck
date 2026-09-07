@@ -450,3 +450,5 @@ try {
 } catch (e) {
   showError("Init failed: " + e.message);
 }
+
+document.body.focus();
